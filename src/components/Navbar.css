@@ -41,7 +41,7 @@
   list-style: none;
   text-align: center;
   width: 60vw;
-  justify-content: start;
+  justify-content: end;
   margin-right: 2rem;
 }
 
@@ -76,6 +76,8 @@
 }
 
 @media screen and (max-width: 960px) {
+  /* when max width is 960px, switch to 3 bars and theses styles */
+
   .NavbarItems {
     position: relative;
   }
@@ -98,6 +100,7 @@
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 1;
+    justify-content: start;
   }
 
   .nav-links {
