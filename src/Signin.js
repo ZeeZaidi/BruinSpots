@@ -4,7 +4,6 @@ import { Form, Button, Card } from "react-bootstrap";
 export default function Signin() {
     const emailRef = useRef();
     const passwordRef = useRef();
-    const passwordConfirmRef = useRef();
 
     return (
         <>
@@ -19,10 +18,6 @@ export default function Signin() {
                         <Form.Group id='password'>
                             <Form.Label>Password</Form.Label>
                             <Form.Control type='password' ref={passwordRef} required />
-                        </Form.Group>
-                        <Form.Group id='password-confirm'>
-                            <Form.Label>Password Confirm</Form.Label>
-                            <Form.Control type='password' ref={passwordConfirmRef} required />
                         </Form.Group>
                         <Button className='w-100' type='submit'>Sign In</Button>
                     </Form>
