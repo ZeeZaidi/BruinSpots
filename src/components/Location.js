@@ -1,29 +1,101 @@
 import React from 'react';
 import './Location.css';
 import TextBox from './TextBox.js';
-import IconButton from '@mui/material/IconButton';
 import powell from './powell.jpg';
-import logo from './logo.png';
 import { Box, Typography } from '@mui/material';
 import Rating from '@mui/material/Rating';
+import NavBar from './Navbar';
+import { BrowserRouter as Router, Routes as Switch, Route } from 'react-router-dom';
+import logo from './logo.png';// just for example
+import ReviewList from './ReviewList';
+import mapImage from './map.png'//map image of Powell we can easily change this later if we want
+import Map from './Map.js';
+
+
 
 const bruinSpotName = "Powell Library";//study sopt
 const image = powell;//image used in page
 const rating = 4.5; // rating out of 5 stars
+
+const reviews = [
+  {
+    id: 1,
+    avatar: logo,
+    userName: 'Monkey D luffy',
+    starRating: 5,
+    reviewBody: 'I have never studied before in my life but I love Powell library!',
+    date: '2-24-2023' 
+  },
+  {
+    id: 2,
+    avatar: logo,
+    userName: 'Jdrizzy',
+    starRating: 3.5,
+    reviewBody: 'I am nerd',
+    date: '2-12-1998' 
+  },
+  {
+    id: 3,
+    avatar: logo,
+    userName: 'Bradley Cooper',
+    starRating: 2,
+    reviewBody: 'I acted in the hangover movie',
+    date: '2-23-2023' 
+  },
+  {
+    id: 4,
+    avatar: logo,
+    userName: 'Curious George',
+    starRating: 4,
+    reviewBody: 'Oooh oooh Ahhh ahHH',
+    date: '2-12-2012' 
+  },
+  {
+    id: 5,
+    avatar: logo,
+    userName: 'Percy Jackson',
+    starRating: 0,
+    reviewBody: 'there no pool here :{',
+    date: '2-24-2023' 
+  },
+  {
+    id: 6,
+    avatar: logo,
+    userName: 'Eric Cartman',
+    starRating: 3,
+    reviewBody: '*Something racist probably*',
+    date: '2-12-2020' 
+  },
+  {
+    id: 7,
+    avatar: logo,
+    userName: 'Woodrow Wilson',
+    starRating: 4.5,
+    reviewBody: 'I love *insert some thing racist*',
+    date: '9-24-1913' 
+  },
+  {
+    id: 8,
+    avatar: logo,
+    userName: 'Creativity',
+    starRating: 5,
+    reviewBody: 'I am ded',
+    date: '2-12-1998' 
+  },
+  // Add more review objects as needed
+];
+
+
+
 function Location() {
   return (
-    <>
-        <div className="top-bar">
-            <div className="logo">
-                <IconButton aria-label="logo" onClick={handleClickHome}><img src={logo} alt="Website Logo" /></IconButton>
-            </div>
-            <nav className="menu">
-              <ul>
-                <li><button className="button-login" onClick={handleClickLogin}>Login</button></li>
-                <li><button className="button-signup" onClick={handleClickSignUp}>Signup</button></li>
-              </ul>
-            </nav>
-        </div>
+    <>  
+      <Router>
+        <NavBar />
+          <Switch>
+            <Route path='/' exact />
+          </Switch>
+      </Router>
         <div className="location">
                   <div className="image-container">
                     <img aria-label ="study"src={image} alt="of study spot"/>
@@ -51,20 +123,17 @@ function Location() {
                         <Rating name="rating" value={rating} precision={0.5} readOnly />
                       </Box>
                   </div>
-                    <TextBox className="" placeholderText="Have any comments about this Bruin Spot? Just write them here" />
+                  <div className="reviews-list">
+                    <h1> Reviews: </h1>
+                    <TextBox placeholderText="Have any comments about this Bruin Spot? Just write them here" />
+                    <ReviewList reviews={reviews} />
+                  </div>
+                  <div className='map-container'>
+                    <Map mapImage={mapImage}></Map>
+                  </div>
         </div>
     </>
   );
 }
 
 export default Location;
-
-function handleClickHome({e}){
- return;
-}
-function handleClickLogin({e}){
-  return;
-}
-function handleClickSignUp({e}){
-  return;
-}

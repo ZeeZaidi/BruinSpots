@@ -1,0 +1,48 @@
+.review-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-picture {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .profile-picture img {
+    height: 40px;
+    border-radius: 100%;
+  }
+  
+  .review-info {
+    display: inline-block;
+    vertical-align: center;
+    margin-left: 10px;
+  }
+  
+  .review-info h6 {
+    margin: 0;
+  }
+  
+  .review-info button {
+    border: none;
+    background-color: white;
+    font-weight: 700;
+    font-size: larger;
+  }
+  
+  .review-info button:hover {
+    text-decoration: underline;
+  }
+  
+  .review-info p {
+    margin: 0;
+    font-size: 14px;
+    color: gray;
+    text-align: left;
+  }
+.text-body p{
+    margin: 0;
+    font-size: 14px;
+    color: rgb(62, 61, 61);
+    text-align: left;
+}  
