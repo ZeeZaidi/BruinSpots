@@ -1,31 +1,62 @@
-import React, {useRef} from "react";
-import { Form, Button, Card } from "react-bootstrap";
 
-export default function Signin() {
-    const emailRef = useRef();
-    const passwordRef = useRef();
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { auth , database } from "./firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import "./Signup.css";
 
-    return (
-        <>
-            <Card>
-                <Card.Body>
-                    <h2 className="text-center mb-4">Sign in</h2>
-                    <Form>
-                        <Form.Group id='email'>
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type='email' ref={emailRef} required />
-                        </Form.Group>
-                        <Form.Group id='password'>
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type='password' ref={passwordRef} required />
-                        </Form.Group>
-                        <Button className='w-100' type='submit'>Sign In</Button>
-                    </Form>
-                </Card.Body>
-            </Card>
-            <div className="w-100 text-center mt-2">
-                Don't have an account? Sign up
-            </div>
-        </>
-    )
+const log_in_with_email = async (email, password) => {
+    try {
+        const res = await signInWithEmailAndPassword(auth, email, password);
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
 }
+
+function Signin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, loading, error] = useAuthState(auth);
+
+  const navigate = useNavigate();
+
+  const log_in = () => {
+    log_in_with_email(email, password);
+  };
+
+  useEffect(() => {
+    if (loading) return;
+    if (user) {
+      navigate('/');
+    }
+   }, [user, loading]);
+
+  return (
+    <div className="register">
+      <div className="register__container">
+        <h1>Sign in</h1>
+        <input
+          type="text"
+          className="register__textBox"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="E-mail Address"
+        />
+        <input
+          type="password"
+          className="register__textBox"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
+          <button className="register__btn" onClick={log_in}>Log in</button>
+        <div>
+          Don't have an account? <Link to="/sign-up">Sign up</Link> now.
+        </div>
+      </div>
+    </div>
+  );
+}
+export default Signin;
