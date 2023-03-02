@@ -1,8 +1,10 @@
 import React from "react";
 import { database } from "./firebase";
-import {addDoc, collection } from "firebase/firestore";
+import {addDoc , updateDoc , doc , collection } from "firebase/firestore";
+import { auth } from "./firebase.js";
+import { getAuth } from "firebase/auth";
 
-const uploadComment = async (message, userID, locID) => {
+export const uploadComment = async (message, userID, locID) => {
     try {
         await addDoc(collection(database, "locations/"+locID+"/comments"), {
             comment: message,
@@ -16,4 +18,18 @@ const uploadComment = async (message, userID, locID) => {
     }
 }
 
-export default uploadComment;
+export const uploadEditProfile = async (name , bio , profilePic) => {
+    try {
+        const user = auth.currentUser;
+        await updateDoc(doc(database, "users", user.uid), {
+            name: name,
+            bio: bio,
+            profilePic: profilePic
+        });
+    }
+    catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}
+
