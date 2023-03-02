@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { auth , database } from "./firebase";
-import {collection , addDoc } from "firebase/firestore"
+import {collection , addDoc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import { createUserWithEmailAndPassword , signOut } from "firebase/auth";
 import "./Signup.css";
 
@@ -11,7 +12,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
-    await addDoc(collection(database, "users"), {
+    await setDoc(doc(database, "users", user.uid), {
       uid: user.uid,
       name,
       authProvider: "local",
