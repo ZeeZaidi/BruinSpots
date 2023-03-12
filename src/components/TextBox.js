@@ -4,6 +4,8 @@ import SendIcon from '@mui/icons-material/Send';
 import IconButton from '@mui/material/IconButton';
 import RatingSystem from './Stars';
 
+
+
 const TextBox = ({ placeholderText }) => {
   return (
     <>
@@ -20,6 +22,7 @@ const TextBox = ({ placeholderText }) => {
 };
 function handleClickSend({e})
 {
+
 return;
 }
 export default TextBox;

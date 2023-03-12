@@ -32,6 +32,7 @@
   
   .review-info button:hover {
     text-decoration: underline;
+    cursor:pointer;
   }
   
   .review-info p {

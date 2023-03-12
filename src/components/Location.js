@@ -5,11 +5,12 @@ import powell from './powell.jpg';
 import { Box, Typography } from '@mui/material';
 import Rating from '@mui/material/Rating';
 import NavBar from './Navbar';
-import { BrowserRouter as Router, Routes as Switch, Route } from 'react-router-dom';
+//import { BrowserRouter as Router, Routes as Switch, Route } from 'react-router-dom';
 import logo from './logo.png';// just for example
 import ReviewList from './ReviewList';
 import mapImage from './map.png'//map image of Powell we can easily change this later if we want
 import Map from './Map.js';
+import { uploadComment } from '../Upload';
 
 
 
@@ -90,13 +91,7 @@ const reviews = [
 function Location() {
   return (
     <>  
-      <Router>
-        <NavBar />
-          <Switch>
-            <Route path='/' exact />
-          </Switch>
-      </Router>
-        <div className="location">
+      <div className="location">
                   <div className="image-container">
                     <img aria-label ="study"src={image} alt="of study spot"/>
                     <Box
@@ -123,14 +118,20 @@ function Location() {
                         <Rating name="rating" value={rating} precision={0.5} readOnly />
                       </Box>
                   </div>
+          <div className="container">
+            <div className='left-pane'>
                   <div className="reviews-list">
                     <h1> Reviews: </h1>
                     <TextBox placeholderText="Have any comments about this Bruin Spot? Just write them here" />
                     <ReviewList reviews={reviews} />
                   </div>
+                </div>
+            </div>
+            <div className='right-pane'>
                   <div className='map-container'>
                     <Map mapImage={mapImage}></Map>
                   </div>
+            </div>  
         </div>
     </>
   );

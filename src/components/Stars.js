@@ -5,6 +5,17 @@ import Box from '@mui/material/Box';
 const RatingSystem = () => {
   const [value, setValue] = useState(0);
 
+  const handleRatingChange = (event, newValue) => {
+    const intValue = parseInt(newValue, 10);
+    setValue(intValue);
+    handleSelectedValue(intValue);
+  };
+
+  const handleSelectedValue = (selectedValue) => {
+    // Do something with the selected value, such as updating state or sending to a server
+    console.log('Selected value:', selectedValue);
+  };
+
   return (
     <Box 
      sx={{ 
@@ -15,9 +26,7 @@ const RatingSystem = () => {
       <Rating
         name="simple-controlled"
         value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
+        onChange={handleRatingChange}
       />
     </Box>
   );
