@@ -3,11 +3,11 @@ import './toLocation.css';
 import {Link} from 'react-router-dom';
 import Rating from '@mui/material/Rating';
 
-const Location = ({starRating}) => {
+const ToLocation = ({starRating}) => {
   return (
 
 <div>
-    <Link to="/powell"> 
+    <Link to="/powell" style={{ textDecoration: 'none' }}> 
         <div className="toLocation-container">
 
             <div>
@@ -35,7 +35,7 @@ const Location = ({starRating}) => {
     </Link>
 
 
-    <Link to="/yrl"> 
+    <Link to="/yrl" style={{ textDecoration: 'none' }}> 
         <div className="toLocation-container">
 
             <div>
@@ -63,7 +63,7 @@ const Location = ({starRating}) => {
     </Link>
 
 
-    <Link to="/boelter"> 
+    <Link to="/boelter" style={{ textDecoration: 'none' }}> 
         <div className="toLocation-container">
 
             <div>
@@ -94,4 +94,4 @@ const Location = ({starRating}) => {
   );
 };
 
-export default Location;
+export default ToLocation;

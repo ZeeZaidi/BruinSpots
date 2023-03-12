@@ -90,12 +90,7 @@ const reviews = [
 function Location() {
   return (
     <>  
-      <Router>
-        <NavBar />
-          <Switch>
-            <Route path='/' exact />
-          </Switch>
-      </Router>
+
         <div className="location">
                   <div className="image-container">
                     <img aria-label ="study"src={image} alt="of study spot"/>
