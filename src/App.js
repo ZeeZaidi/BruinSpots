@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes as Switch, Route } from 'react-router-d
 import './App.css';
 import SignUp from './SignUp';
 import Signin from './Signin';
+import Location from './components/toLocation';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/sign-in' exact element={<Signin />} />
           <Route path='/sign-up' exact element={<SignUp />} />
         </Switch>
+        <Location />
       </Router>
 
 
