@@ -5,8 +5,10 @@ import { BrowserRouter as Router, Routes as Switch, Route } from 'react-router-d
 import './App.css';
 import SignUp from './SignUp';
 import Signin from './Signin';
+import { uploadComment } from './Upload'
 
 function App() {
+  uploadComment("Review", 5, "user", "location")
   return (
     <>
 

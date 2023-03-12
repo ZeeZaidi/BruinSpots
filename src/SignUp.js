@@ -82,3 +82,4 @@ export default Signup;
 const logout = () => {
   signOut(auth);
 };
+
