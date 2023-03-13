@@ -52,19 +52,19 @@ function Navbar() {
                 </li>
 
                 <li className='nav-item'>
-                  <Link to='/aboutUs' className='nav-links' onClick={closeMenu}>
-                    About Us
+                  <Link to='/request' className='nav-links' onClick={closeMenu}>
+                    Request
                   </Link>
                 </li>
 
                 <li>
-                 <Link to='/profile' className='nav-links-mobile' onClick={closeMenu}>
+                 <Link to='/sign-in' className='nav-links-mobile' onClick={closeMenu}>
                   PROFILE
                 </Link>
               </li>
 
             </ul>
-            {button && <Button buttonStyle='button--outline'> LOG IN </Button>}
+            {button && <Button buttonStyle='button--outline'> PROFILE </Button>}
           </div>
       </nav>
     </>
