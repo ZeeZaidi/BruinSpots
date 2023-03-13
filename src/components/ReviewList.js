@@ -3,9 +3,9 @@ import Review from './Review';
 function ReviewList({ reviews }) {
   return (
     <div>
-      {reviews.map((review) => (
+      {reviews.map((review, index) => (
         <Review
-          key={review.id} // Make sure to provide a unique key for each instance of the component
+          key={index} // Make sure to provide a unique key for each instance of the component
           avatar={review.avatar}
           userName={review.userName}
           starRating={review.starRating}

@@ -20,7 +20,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 export const database = getFirestore(app);
 export const auth = getAuth(app); // Connect to user-authentication
 
