@@ -5,8 +5,12 @@ import { BrowserRouter as Router, Routes as Switch, Route } from 'react-router-d
 import './App.css';
 import SignUp from './SignUp';
 import Signin from './Signin';
+import { createReviews } from './components/Settings';
+import { uploadComment} from './Upload'
 
 function App() {
+  createReviews()
+  uploadComment("comment", "5", "ndb4bJZnZ4ebNowzKZYPPS3a4qT2","Powell")
   return (
     <>
 

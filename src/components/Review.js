@@ -7,7 +7,6 @@ const Review = ({key, avatar, userName, starRating, reviewBody, date }) => {
   return (
     //use key to get the reviews from db
 
-
     <div className="review-container">
       <div className="profile-picture-container">
       <div className="review-container">
