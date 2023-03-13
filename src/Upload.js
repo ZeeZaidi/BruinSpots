@@ -13,7 +13,11 @@ export const uploadComment = async (message, stars, userID, locID) => {
             userID: userID,
             rating: stars
         });
+<<<<<<< HEAD
         await updateDoc(doc(database, "users", userID), {
+=======
+        await updateDoc(doc(database, "users" , userID), {
+>>>>>>> 894464b63cc5da79cbd32fb57a277374dd5d434c
             comments: arrayUnion(newComment.id)
         })
     }
@@ -37,3 +41,20 @@ export const uploadEditProfile = async (name , bio , profilePic) => {
     }
 }
 
+export const getData = async(collection, id, attribute) => {
+    try {
+        const docRef = doc(database, collection, id);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+        }
+    }
+    catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}

@@ -7,5 +7,5 @@ import Settings from './components/Settings'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <App />
+    <Location />
 );

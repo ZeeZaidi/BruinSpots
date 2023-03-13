@@ -3,7 +3,6 @@ import './TextBox.css'
 import SendIcon from '@mui/icons-material/Send';
 import IconButton from '@mui/material/IconButton';
 import RatingSystem from './Stars';
-import { upload } from '@testing-library/user-event/dist/upload';
 import { uploadComment } from '../Upload'
 
 const TextBox = ({ placeholderText }) => {
@@ -29,6 +28,5 @@ function handleClickSend({e})
   console.log(url);
   console.log(locID);
   uploadComment(userText, 5, "Gd0AOQIGE1VLpOI793CK94pDRRz1" , locID);
-  return;
 }
 export default TextBox;
