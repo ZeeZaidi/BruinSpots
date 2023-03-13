@@ -122,7 +122,7 @@ function Location() {
             <div className='left-pane'>
                   <div className="reviews-list">
                     <h1> Reviews: </h1>
-                    <TextBox placeholderText="Have any comments about this Bruin Spot? Just write them here" />
+                    <TextBox placeholderText="Have any comments about this Bruin Spot? Just write them here"/>
                     <ReviewList reviews={reviews} />
                   </div>
                 </div>
