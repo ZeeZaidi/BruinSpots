@@ -8,7 +8,6 @@ import Signin from './Signin';
 import { uploadComment } from './Upload'
 
 function App() {
-  uploadComment("Review", 5, "user", "location")
   return (
     <>
 

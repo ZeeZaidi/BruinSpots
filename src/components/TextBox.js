@@ -41,7 +41,8 @@ import SendIcon from '@mui/icons-material/Send';
 import IconButton from '@mui/material/IconButton';
 import RatingSystem from './Stars';
 import { upload } from '@testing-library/user-event/dist/upload';
-import { uploadComment } from '../Upload'
+import { uploadComment } from '../Upload';
+import { auth } from '../firebase.js';
 
 
 
@@ -58,9 +59,8 @@ const TextBox = ({ placeholderText }) => {
     const userText = textArea.value;
     const url = window.location.href;
     const locID = url.substring(url.lastIndexOf('/') + 1);
-    console.log(url);
-    console.log(locID);
-    uploadComment(userText, selectedRating, "Gd0AOQIGE1VLpOI793CK94pDRRz1" , locID);
+    const user = auth.currentUser;
+    uploadComment(userText, selectedRating, user.uid , locID);
     return;
   };
 
