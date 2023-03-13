@@ -4,11 +4,11 @@ import {addDoc , getDoc, updateDoc , arrayUnion, doc , collection } from "fireba
 import { auth } from "./firebase.js";
 import { getAuth } from "firebase/auth";
 
-export const uploadComment = async (message, stars, userID, locID) => {
+export const uploadComment = async (message, time, stars, userID, locID) => {
     try {
         const newComment = await addDoc(collection(database, "locations/"+locID+"/comments"), {
             comment: message,
-            time: "time",
+            time: time,
             locationID: locID,
             userID: userID,
             rating: stars

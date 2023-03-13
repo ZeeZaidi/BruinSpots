@@ -60,7 +60,8 @@ const TextBox = ({ placeholderText }) => {
     const url = window.location.href;
     const locID = url.substring(url.lastIndexOf('/') + 1);
     const user = auth.currentUser;
-    uploadComment(userText, selectedRating, user.uid , locID);
+    const currentDate = new Date().toLocaleDateString();
+    uploadComment(userText, currentDate ,selectedRating, user.uid , locID);
     return;
   };
 
