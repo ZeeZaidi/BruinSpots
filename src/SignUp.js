@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { auth , database } from "./firebase";
+import { updateProfile } from "firebase/auth";
 import {collection , addDoc } from "firebase/firestore";
 import { setDoc, doc } from "firebase/firestore";
 import { createUserWithEmailAndPassword , signOut } from "firebase/auth";
@@ -18,6 +19,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       authProvider: "local",
       email,
     });
+    await updateProfile(user, { displayName: name });
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -82,4 +84,5 @@ export default Signup;
 const logout = () => {
   signOut(auth);
 };
+
 

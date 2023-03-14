@@ -6,11 +6,13 @@ import { getAuth } from "firebase/auth";
 
 export const uploadComment = async (message, time, stars, userID, locID) => {
     try {
+        const user = auth.currentUser;
         await addDoc(collection(database, "locations/"+locID+"/comments"), {
             comment: message,
             time: time,
             locationID: locID,
             userID: userID,
+            name: user.displayName,
             rating: stars
         });
         await addDoc(collection(database, "users/"+userID+"/comments"), {
