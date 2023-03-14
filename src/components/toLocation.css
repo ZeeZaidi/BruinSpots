@@ -12,7 +12,8 @@
 }
 
 .toLocation-container img {
-  height: auto;
+  height: 194px;
+  width: 260px;
   max-height: 194px;
   max-width: 260px;
   display: block;

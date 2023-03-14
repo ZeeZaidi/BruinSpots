@@ -3,7 +3,8 @@ import './toLocation.css';
 import {Link} from 'react-router-dom';
 import Rating from '@mui/material/Rating';
 
-const ToLocation = ({starRating}) => {
+
+const ToLocation = ({PowellRating, YRLRating, BoelterRating, StudyRating, AckermanRating}) => {
   return (
 
 <div>
@@ -18,8 +19,8 @@ const ToLocation = ({starRating}) => {
             <div className='header'>
 
                 <h1 className='title'> Powell Library
-                <Rating className='rating' name="rating" value={starRating} precision={0.5} readOnly />
-                    ({starRating})
+                <Rating className='rating' name="rating" value={PowellRating} precision={0.5} readOnly />
+                    ({PowellRating})
                 </h1>
 
 
@@ -46,8 +47,8 @@ const ToLocation = ({starRating}) => {
             <div className='header'>
 
                 <h1 className='title'> Charles E. Young Research Library
-                <Rating className='rating' name="rating" value={starRating} precision={0.5} readOnly />
-                    ({starRating})
+                <Rating className='rating' name="rating" value={YRLRating} precision={0.5} readOnly />
+                    ({YRLRating})
                 </h1>
 
 
@@ -74,8 +75,8 @@ const ToLocation = ({starRating}) => {
             <div className='header'>
 
                 <h1 className='title'> Science and Engineering Library
-                <Rating className='rating' name="rating" value={starRating} precision={0.5} readOnly />
-                    ({starRating})
+                <Rating className='rating' name="rating" value={BoelterRating} precision={0.5} readOnly />
+                    ({BoelterRating})
                 </h1>
 
 
@@ -83,6 +84,62 @@ const ToLocation = ({starRating}) => {
                         The UCLA Science and Engineering Library has 2 locations, both on the south side of campus.
                         Students can either visit 8270 Boelter Hall or 4697 in the Geology Building. Both locations
                         provide printing services and offer computer access. 
+                </description>
+
+            </div>            
+
+        </div>
+    </Link>
+
+    <Link to="/thestudy" style={{ textDecoration: 'none' }}> 
+        <div className="toLocation-container">
+
+            <div>
+                <img src="./thestudy.jpg" alt="The Study"/>
+            </div>
+
+
+            <div className='header'>
+
+                <h1 className='title'> The Study
+                <Rating className='rating' name="rating" value={StudyRating} precision={0.5} readOnly />
+                    ({StudyRating})
+                </h1>
+
+
+                <description className='text'> 
+                        The Study is located near Hedrick Hall on "The Hill", the location of UCLA's dorm buildings. It serves 
+                        as a close, convenient study spot for dorm residents, offering quiet spaces with power and high-speed WIFI. 
+                        Additionally, it doubles as a restaurant so students can use their meal swipes to purchase food 
+                        and refreshments as they work. 
+                </description>
+
+            </div>            
+
+        </div>
+    </Link>
+
+
+    <Link to="/ackerman" style={{ textDecoration: 'none' }}> 
+        <div className="toLocation-container">
+
+            <div>
+                <img src="./ackerman.jpg" alt="Ackerman Union"/>
+            </div>
+
+
+            <div className='header'>
+
+                <h1 className='title'> Ackerman Union
+                <Rating className='rating' name="rating" value={AckermanRating} precision={0.5} readOnly />
+                    ({AckermanRating})
+                </h1>
+
+
+                <description className='text'> 
+                        Ackerman Union is located at the heart of campus along BruinWalk. There are plenty of places to sit and 
+                        study throughout this multi-story building. Not to mention, it offers a number of amenities to students which include 
+                        restaurants, printing stations, and stores to purchase textbooks and other class materials. 
                 </description>
 
             </div>            
