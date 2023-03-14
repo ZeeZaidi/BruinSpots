@@ -7,36 +7,17 @@ import { upload } from "../firebase.js";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import defaultProfilePic from "./teddy_bear_studying.png"
 import ReviewList from './ReviewList'
+import { fontSize } from '@mui/system';
+import { uploadEditEmail, uploadEditName } from '../Upload';
 
-
-import { database } from "../firebase";
-import {doc , getDoc , updateDoc} from "firebase/firestore";
-import { auth } from "../firebase.js";
-
-export const createReviews = async () => {
-    try {
-        const user = auth.currentUser;
-        if (user){
-            const docRef = doc(database, "users" , user.uid);
-            const userDoc = await getDoc(docRef)
-            if (userDoc.exists()) {
-                console.log("DOcumENt DATA: " , userDoc.data());
-                
-            }
-        }
-    }
-    catch(err) {
-        alert(err.message);
-    }
-}
 
 
 export default function Settings() {
-    //const auth = getAuth();
+    const auth = getAuth();
     const currentUser = auth.currentUser;
-    const [photo, setPhoto] = useState(null);
+    const [photo, setPhoto] = useState(null); //null or false?
     const [loading, setLoading] = useState(false);
-    const [photoURL, setPhotoURL] = useState({defaultProfilePic});
+    const [photoURL, setPhotoURL] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png");
 
         function handleChange(e) {
             if (e.target.files[0]){
@@ -53,13 +34,7 @@ export default function Settings() {
             setPhotoURL(currentUser.photoURL);
         }
     }, [currentUser])
-    //get user profile info for display
-    //    const auth = getAuth();
-    //    const user = auth.currentUser;
-    //    if (user !==null) {
-    //     var username = currentUser.name;
-    //     var emailaddress = currentUser.email;
-    //    }
+
     
     return (
         <>  
@@ -69,19 +44,25 @@ export default function Settings() {
             <Route path='/' exact />
             </Switch>
         </Router>
+
+        
             <div>
+                {/* update profile photo section */}
+                <h1 style={{fontSize:"70px", margin:"10px 115px", borderBottom:"10px solid gray"}}>Settings</h1>
+                <h1 style={{fontSize:"40px", margin:"5px 115px"}}>Update Profile Photo</h1>
                 <div className="fields">
-                    <input type="file" onChange={handleChange} />
-                    <button disabled={loading || !photo} onClick={handleClick}>Upload</button>
-                    <img src={photoURL} alt="Avatar" className="avatar"/>
+                    <div style={{borderBottom:"10px solid gray", margin:"10px 0px"}}>
+                            <input type="file" onChange={handleChange} style={{fontSize:"30px"}} />
+                            <button disabled={loading || !photo} onClick={handleClick} style={{fontSize:"30px"}}>Upload</button>
+                            <img src={photoURL} alt="Avatar" className="avatar"/>
+                    </div>
                 </div>
+
                 <div>
-                    <h1>Username:</h1>
+                    {/* update username section */}
+                    <h1 style={{fontSize:"40px", margin:"5px 115px"}}>Update Username</h1>
                 </div>
-                <div>
-                    <h1>Reviews:</h1>
-                    
-                </div>
+
             </div>
         </>
     );
