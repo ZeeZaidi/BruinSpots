@@ -31,16 +31,24 @@ async function getAverageStars() {
   const starRatings = commentsData.map((comment) => comment.starRating);
   const sum = starRatings.reduce((total, num) => total + num, 0);
   const average = sum/starRatings.length;
-  console.log(average);
+  return average;
  }
 /* =============================================== */
 
 const bruinSpotName = "Powell Library";//study sopt
 const image = powell;//image used in page
-const rating = 4.5; // rating out of 5 stars
 
 function Location() {
   const [reviewsData, setReviewsData] = useState([])
+
+  const [rating, setRating] = useState(0); // add state for rating value
+  useEffect(() => {
+      async function fetchData() {
+      const averageRating = await getAverageStars(); // await the result of the async function
+      setRating(averageRating); // update rating state variable
+    }
+    fetchData();
+  }, []);
 
   useEffect(() => {
     async function updateReviewsData() {
