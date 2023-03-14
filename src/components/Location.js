@@ -15,43 +15,29 @@ import {database} from '../firebase';
 import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from 'react';
 
+/* ============== Calculate rating =============== */
+async function getAverageStars() {
+  // Get a reference to the database
+  const commentsCollection = collection(database, 'locations/powell/comments');
+  const commentsDoc = await getDocs(commentsCollection);
+  const commentsData = commentsDoc.docs.map((d) => {
+    const doc = d.data();
+    return {
+      starRating: doc.rating,
+    };
+  });
 
+  // Extract starRatings array from commentsData
+  const starRatings = commentsData.map((comment) => comment.starRating);
+  const sum = starRatings.reduce((total, num) => total + num, 0);
+  const average = sum/starRatings.length;
+  console.log(average);
+ }
+/* =============================================== */
 
 const bruinSpotName = "Powell Library";//study sopt
 const image = powell;//image used in page
 const rating = 4.5; // rating out of 5 stars
-
-
-
-// Create a reference to the comments collection inside the powell document
-//const commentsRef = database.ref('location/powell/comments');
-
-// // Read the data
-// commentsRef.once('value', snapshot => {
-//   snapshot.forEach(childSnapshot => {
-//     // Get the values for each comment
-//     const comment = childSnapshot.val();
-//     const id = childSnapshot.key;
-//     const {
-//       comment: commentValue,
-//       locationID,
-//       rating,
-//       time,
-//       userID,
-//     } = comment;
-
-//     console.log({
-//       id,
-//       comment: commentValue,
-//       locationID,
-//       rating,
-//       time,
-//       userID,
-//     });
-//   });
-// });
-
-
 
 function Location() {
   const [reviewsData, setReviewsData] = useState([])
@@ -61,18 +47,8 @@ function Location() {
       // Get a reference to the database
       const commentsCollection = collection(database, 'locations/powell/comments');
       const commentsDoc = await getDocs(commentsCollection)
-      // const usersCollection = collection(database, 'users');
-      // const usersDoc = await getDocs(usersCollection)
-      // const username = usersDoc.docs.map((u) => {
-      //   const usrDoc = u.data();
-      //   return usrDoc.name} )
       const commentsData = commentsDoc.docs.map((d) => {
           const doc = d.data();
-          // const usedUsername = "";
-          // if(username === doc.userID)
-          // {
-          //     usedUsername = username;
-          // }
           return {
             avatar: logo,
             userName: doc.userID,
@@ -89,7 +65,7 @@ function Location() {
 
     updateReviewsData()
   }, [])
-  
+
   return (
           <div className="location">
             <div className="image-container">
