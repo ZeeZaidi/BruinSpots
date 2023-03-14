@@ -15,12 +15,30 @@ import {database} from '../firebase';
 import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from 'react';
 
+/* ============== Calculate rating =============== */
+async function getAverageStars() {
+    // Get a reference to the database
+    const commentsCollection = collection(database, 'locations/yrl/comments');
+    const commentsDoc = await getDocs(commentsCollection);
+    const commentsData = commentsDoc.docs.map((d) => {
+      const doc = d.data();
+      return {
+        starRating: doc.rating,
+      };
+    });
+  
+    // Extract starRatings array from commentsData
+    const starRatings = commentsData.map((comment) => comment.starRating);
+    const sum = starRatings.reduce((total, num) => total + num, 0);
+    const average = sum/starRatings.length;
+    return average;
+   }
+  /* =============================================== */
+
 
 
 const bruinSpotName = "Charles E. Young Research Library";//study sopt
 const image = yrl;//image used in page
-const rating = 4.5; // rating out of 5 stars
-
 
 
 // Create a reference to the comments collection inside the powell document
@@ -56,6 +74,17 @@ const rating = 4.5; // rating out of 5 stars
 function YRL() {
   const [reviewsData, setReviewsData] = useState([])
 
+
+  const [rating, setRating] = useState(0); // add state for rating value
+  useEffect(() => {
+      async function fetchData() {
+      const averageRating = await getAverageStars(); // await the result of the async function
+      setRating(averageRating); // update rating state variable
+    }
+    fetchData();
+  }, []);
+
+  
   useEffect(() => {
     async function updateReviewsData() {
       // Get a reference to the database

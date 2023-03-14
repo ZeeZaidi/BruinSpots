@@ -21,7 +21,7 @@ function App() {
       <Router>
         <NavBar />
         <Switch>
-          <Route path='/' exact element={<ToLocation PowellRating={4} YRLRating={3} BoelterRating={3.5} StudyRating={4.5} AckermanRating={4} />} />
+          <Route path='/' exact element={<ToLocation />} />
           <Route path='/sign-in' exact element={<Signin />} />
           <Route path='/sign-up' exact element={<SignUp />} />
           <Route path='/powell' exact element={<Location />} />

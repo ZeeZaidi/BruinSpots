@@ -38,6 +38,8 @@ async function getAverageStars() {
 const bruinSpotName = "Powell Library";//study sopt
 const image = powell;//image used in page
 
+
+
 function Location() {
   const [reviewsData, setReviewsData] = useState([])
 
