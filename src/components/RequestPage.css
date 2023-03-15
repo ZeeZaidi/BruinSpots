@@ -1,6 +1,15 @@
-.requestPage-container {
+.requestPage-background {
+  background-image: url(request_background.jpg);
+  position: fixed;
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0.2;
+}
+
+.requestText {
   color: rgb(3, 0, 0);
   text-align: center;
   padding: 15px;
-  font-size: 3vmin;
+  font-size: 5vmin;
+  opacity: 1;
 }
