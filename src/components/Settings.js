@@ -10,7 +10,49 @@ import ReviewList from './ReviewList'
 import { fontSize } from '@mui/system';
 import { uploadEditEmail, uploadEditName } from '../Upload';
 
+const InputBox = () => {
+    const [inputName, setInputName] = useState('');
+    const [inputEmail, setInputEmail] = useState('');
 
+    const onNameClick = () => {
+        uploadEditName(inputName);
+        alert('Submitted!')
+    }
+
+    const nameChange = e => {
+        setInputName(e.target.value);
+    }
+
+    const onEmailClick = () => {
+        uploadEditEmail(inputEmail);
+    }
+
+    const emailChange = e => {
+        setInputEmail(e.target.value);
+    }
+    return (
+        <>
+        <div>
+        <h1 style={{fontSize:"40px", margin:"5px 115px"}}>Update Username</h1>
+            <input style={{margin:"5px 115px", borderBottom:"10px solid gray"}}
+            onChange={nameChange}
+            type="text" 
+            value={inputName} 
+            />
+            <button onClick={onNameClick}>Submit</button>
+        </div>
+        <div>
+        <h1 style={{fontSize:"40px", margin:"5px 115px"}}>Update Email</h1>
+            <input style={{margin:"5px 115px", borderBottom:"10px solid gray"}}
+            onChange={emailChange}
+            type="text"
+            value={inputEmail}
+            />
+            <button onClick={onEmailClick}>Submit</button>
+        </div>
+        </>
+    );
+}
 
 export default function Settings() {
     const auth = getAuth();
@@ -60,8 +102,10 @@ export default function Settings() {
 
                 <div>
                     {/* update username section */}
-                    <h1 style={{fontSize:"40px", margin:"5px 115px"}}>Update Username</h1>
+                    
                 </div>
+
+                <InputBox></InputBox>
 
             </div>
         </>
