@@ -105,7 +105,7 @@ function TheStudy() {
           // }
           return {
             avatar: logo,
-            userName: doc.userID,
+            userName: doc.name,
             starRating: doc.rating,
             reviewBody: doc.comment,
             date: doc.time
