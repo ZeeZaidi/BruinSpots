@@ -6,20 +6,13 @@ import { getAuth } from "firebase/auth";
 
 export const uploadComment = async (message, stars, userID, locID) => {
     try {
-        const newComment = await addDoc(collection(database, "locations/"+locID+"/comments"), {
+        await addDoc(collection(database, "locations/"+locID+"/comments"), {
             comment: message,
             time: "time",
             locationID: locID,
             userID: userID,
             rating: stars
         });
-<<<<<<< HEAD
-        await updateDoc(doc(database, "users", userID), {
-=======
-        await updateDoc(doc(database, "users" , userID), {
->>>>>>> 894464b63cc5da79cbd32fb57a277374dd5d434c
-            comments: arrayUnion(newComment.id)
-        })
     }
     catch(err) {
         alert(err.message);
@@ -33,6 +26,32 @@ export const uploadEditProfile = async (name , bio , profilePic) => {
             name: name,
             bio: bio,
             profilePic: profilePic
+        });
+    }
+    catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}
+
+export const uploadEditName = async (name) => {
+    try {
+        const user = auth.currentUser;
+        await updateDoc(doc(database, "users", user.uid), {
+            name: name
+        });
+    }
+    catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}
+
+export const uploadEditEmail = async (email) => {
+    try {
+        const user = auth.currentUser;
+        await updateDoc(doc(database, "users", user.uid), {
+            email: email
         });
     }
     catch (err) {
