@@ -1,14 +1,20 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button } from './Button';
 import './Navbar.css';
+import { signOut } from 'firebase/auth';
 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
 
   const handleClick = () => setClick(!click);
   const closeMenu = () => setClick(false);
+  const logOut = () => signOut(auth);
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -46,25 +52,29 @@ function Navbar() {
                 </li>
 
                 <li className='nav-item'>
-                  <Link to='/favorites' className='nav-links' onClick={closeMenu}>
-                    Favorites
-                  </Link>
-                </li>
-
-                <li className='nav-item'>
                   <Link to='/request' className='nav-links' onClick={closeMenu}>
                     Request
                   </Link>
                 </li>
 
                 <li>
-                 <Link to='/sign-in' className='nav-links-mobile' onClick={closeMenu}>
+                  {user && <Link to='/profile' className='nav-links-mobile' onClick={closeMenu}>
                   PROFILE
-                </Link>
+                  </Link>}
+                  {user && <Link to='/' className='nav-links-mobile' onClick={() => {closeMenu(); logOut();}}>
+                  LOGOUT
+                  </Link>}
+
+                  {!user && <Link to='/sign-in' className='nav-links-mobile' onClick={closeMenu}>
+                  SIGN IN
+                  </Link>}
               </li>
 
             </ul>
-            {button && <Button buttonStyle='button--outline'> PROFILE </Button>}
+            {button && user && <Button buttonStyle='button--outline' linkTo='/profile'> PROFILE </Button>}
+            {button && user && <Button buttonStyle='button--outline' onClick={logOut}> LOGOUT </Button>}
+
+            {button && !user && <Button buttonStyle='button--outline'> SIGN IN </Button>}
           </div>
       </nav>
     </>

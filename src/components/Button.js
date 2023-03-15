@@ -6,14 +6,14 @@ const STYLES = ['button--primary', 'button--outline']
 
 const SIZES = ['button--medium', 'button--large'];
 
-export const Button = ({children, type, onClick, buttonStyle, buttonSize}) => {
+export const Button = ({children, type, onClick, buttonStyle, buttonSize, linkTo="/sign-in"}) => {
 
     const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
 
     const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
     return (
-        <Link to='/sign-in' className='button-mobile'>
+        <Link to={linkTo} className='button-mobile'>
             <button
             className={`button ${checkButtonStyle} ${checkButtonSize}`}
             onClick={onClick}
