@@ -32,7 +32,7 @@ Our Features:
 
    Hence, this average rating is an example of a meaningful search through the server. It is re-calculated and displayed each time a new review is left by a user, and is thus displayed dynamically.
 
-2. To leave a review, a user must be logged in, which they can do by pressing the "PROFILE" button in the  
+2. To leave a review, a user must be logged in, which they can do by pressing the "SIGN IN" button in the  
     upper right corner. A new user can register by entering their full name, email, and a password which are then
    uploaded and stored in the back end file system. When a user attempts to log in, their email and password combination must match what is stored on the server.
 
@@ -48,3 +48,6 @@ Our Features:
    This data is stored in a dedicated file for us developers to read.
 
    The ability to leave a review is a distnct feature of our app. The user can input data in a clear manner, and this data is uploaded and saved on our server.
+
+5. When the user is done leaving reviews and submitting requests, they can log out of their profile using the
+   "LOGOUT" button
