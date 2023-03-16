@@ -1,6 +1,6 @@
 import React from "react";
 import { database } from "./firebase";
-import {addDoc , getDoc, updateDoc , arrayUnion, doc , collection } from "firebase/firestore";
+import {addDoc , getDoc, updateDoc , doc , collection, arrayUnion } from "firebase/firestore";
 import { auth } from "./firebase.js";
 import { getAuth } from "firebase/auth";
 
@@ -35,6 +35,32 @@ export const uploadEditProfile = async (name , bio , profilePic) => {
             name: name,
             bio: bio,
             profilePic: profilePic
+        });
+    }
+    catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}
+
+export const uploadEditName = async (name) => {
+    try {
+        const user = auth.currentUser;
+        await updateDoc(doc(database, "users", user.uid), {
+            name: name
+        });
+    }
+    catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}
+
+export const uploadEditEmail = async (email) => {
+    try {
+        const user = auth.currentUser;
+        await updateDoc(doc(database, "users", user.uid), {
+            email: email
         });
     }
     catch (err) {
