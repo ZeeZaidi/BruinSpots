@@ -60,3 +60,18 @@ export const getData = async(collection, id, attribute) => {
         alert(err.message);
     }
 }
+
+export const uploadRequest = async (message, time, userID) => {
+    try {
+        const user = auth.currentUser;
+        await addDoc(collection(database, "requests"), {
+            comment: message,
+            time: time,
+            userID: userID,
+            name: user.displayName,
+        });
+    }
+    catch(err) {
+        alert(err.message);
+    }
+}

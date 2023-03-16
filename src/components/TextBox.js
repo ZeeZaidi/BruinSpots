@@ -18,14 +18,17 @@ const TextBox = ({ placeholderText }) => {
     console.log('Selected rating value:', ratingValue);
   };
 
-  const handleClickSend = (e) => {
+  const handleClickSend = async (e) => {
     const textArea = document.getElementById('my-text-area');
     const userText = textArea.value;
     const url = window.location.href;
     const locID = url.substring(url.lastIndexOf('/') + 1);
     const user = auth.currentUser;
     const currentDate = new Date().toLocaleDateString();
-    uploadComment(userText, currentDate ,selectedRating, user.uid , locID);
+
+    await uploadComment(userText, currentDate ,selectedRating, user.uid , locID);
+    window.location.reload();
+    
     return;
   };
 

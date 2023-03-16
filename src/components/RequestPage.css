@@ -4,6 +4,7 @@
   min-height: 100%;
   min-width: 100%;
   opacity: 0.2;
+  z-index: -1;
 }
 
 .requestText {
@@ -12,4 +13,8 @@
   padding: 15px;
   font-size: 5vmin;
   opacity: 1;
+}
+
+.text-box {
+  z-index: 1;
 }
