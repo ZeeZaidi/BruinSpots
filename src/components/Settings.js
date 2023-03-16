@@ -117,4 +117,3 @@ export default function Settings() {
 
 // //followed https://www.youtube.com/watch?v=9uYTQJEMj8I
 
-//createReviews();

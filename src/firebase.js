@@ -36,6 +36,7 @@ export async function upload(file, currentUser, setLoading){
 
     const photoURL = await getDownloadURL(fileRef);
     updateProfile(currentUser, {photoURL});
+    
 
     setLoading(false);
     alert("Uploaded file!");

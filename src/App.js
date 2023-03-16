@@ -9,8 +9,7 @@ import { createReviews } from './components/Settings';
 import { uploadComment} from './Upload'
 
 function App() {
-  createReviews()
-  uploadComment("comment", "5", "ndb4bJZnZ4ebNowzKZYPPS3a4qT2","Powell")
+
   return (
     <>
 
