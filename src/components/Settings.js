@@ -80,12 +80,6 @@ export default function Settings() {
     
     return (
         <>  
-        <Router>
-        <Navbar />
-            <Switch>
-            <Route path='/' exact />
-            </Switch>
-        </Router>
 
         
             <div>

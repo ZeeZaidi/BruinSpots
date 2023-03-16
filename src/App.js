@@ -12,6 +12,8 @@ import YRL from './components/YrlPage';
 import Boelter from './components/BoelterPage';
 import TheStudy from './components/TheStudyPage';
 import Ackerman from './components/AckermanPage';
+import Profile from './components/Profile';
+import Settings from './components/Settings';
 
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
           <Route path='/thestudy' exact element={<TheStudy />} />
           <Route path='/ackerman' exact element={<Ackerman />} />
           <Route path='/request' exact element={<RequestPage />} />
+          <Route path='/profile' exact element={<Settings />} />
         </Switch>
       </Router>
 

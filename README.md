@@ -50,4 +50,4 @@ Our Features:
    The ability to leave a review is a distnct feature of our app. The user can input data in a clear manner, and this data is uploaded and saved on our server.
 
 5. When the user is done leaving reviews and submitting requests, they can log out of their profile using the
-   "LOGOUT" button
+   "LOGOUT" button.
