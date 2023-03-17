@@ -2,7 +2,7 @@ import React from "react";
 import { database } from "./firebase";
 import {addDoc , getDoc, updateDoc , doc , collection, arrayUnion } from "firebase/firestore";
 import { auth } from "./firebase.js";
-import { getAuth } from "firebase/auth";
+import { getAuth, updateEmail } from "firebase/auth";
 
 export const uploadComment = async (message, time, stars, userID, locID) => {
     try {
@@ -58,10 +58,12 @@ export const uploadEditName = async (name) => {
 
 export const uploadEditEmail = async (email) => {
     try {
+        console.log(email);
         const user = auth.currentUser;
         await updateDoc(doc(database, "users", user.uid), {
             email: email
         });
+        updateEmail(user, email);
     }
     catch (err) {
         console.error(err);

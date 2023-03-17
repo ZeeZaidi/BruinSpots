@@ -107,7 +107,8 @@ function YRL() {
             userName: doc.name,
             starRating: doc.rating,
             reviewBody: doc.comment,
-            date: doc.time
+            date: doc.time,
+            id: doc.userID
           }
         }
       )

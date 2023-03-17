@@ -25,6 +25,7 @@ const InputBox = () => {
 
     const onEmailClick = () => {
         uploadEditEmail(inputEmail);
+        alert('Submitted!')
     }
 
     const emailChange = e => {

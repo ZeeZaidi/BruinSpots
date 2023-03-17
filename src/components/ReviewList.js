@@ -11,6 +11,7 @@ function ReviewList({ reviews }) {
           starRating={review.starRating}
           reviewBody={review.reviewBody}
           date={review.date} // Assuming you have a date property in your review object
+          id={review.id}
         />
       ))}
     </div>

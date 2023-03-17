@@ -78,7 +78,7 @@ function Navbar() {
 
             </ul>
             {button && user && !inProfile &&
-              <Button buttonStyle='button--outline' linkTo='/profile'
+              <Button buttonStyle='button--outline' linkTo={"/profile?userID="+user.uid}
                 onClick={() => {closeMenu(); wentToProfile();}}> PROFILE
               </Button>
             }
