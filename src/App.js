@@ -32,12 +32,10 @@ function App() {
           <Route path='/thestudy' exact element={<TheStudy />} />
           <Route path='/ackerman' exact element={<Ackerman />} />
           <Route path='/request' exact element={<RequestPage />} />
-          <Route path='/profile' exact element={<Settings />} />
+          <Route path='/profile' exact element={<Profile />} />
+          <Route path='/settings' exact element={<Settings />} />
         </Switch>
       </Router>
-
-
-        
     </>
   );
 }
