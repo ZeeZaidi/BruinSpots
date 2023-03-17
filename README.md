@@ -43,11 +43,19 @@ Our Features:
 
    The ability to leave a review is a distinct feature of our app. The front-end allows a user to enter a query conveniently. It then uploads data to the back end, meaningufully searches through all of the data for the given location's file, ane dynamically displays the result back to the user.
 
-4. If a user finishes leaving reviews on all of the locations, and notices there is another study location not
+4. For other reviews left on a given location, a client can click on another user’s name to navigate to said  
+   user’s profile page. This profile page uses server data to display all of the reviews left by that account.
+   A user can navigate to their profile page using the “PROFILE” button in the navigation bar. This page will show their own review history and also display a "Settings" button. This directs the client to a settings page that allows them to change their username, email, and profile picture, which are stored on our server as well. A user can only access their own settings page.
+
+   The ability to display review histories is a distinct feature, and uses a meaningful search of server data to dynamically display a list of reviews.
+
+   The ability to edit one's own profile is also a feature, and uploads client data to the back end.
+
+5. If a user finishes leaving reviews on all of the locations, and notices there is another study location not
    listed on our site, they can click the request tab to ask for said location to be added. On this request page, the front-end allows a user to enter their query coneveniently, before uploading and storing it on the back end.
    This data is stored in a dedicated file for us developers to read.
 
    The ability to leave a review is a distnct feature of our app. The user can input data in a clear manner, and this data is uploaded and saved on our server.
 
-5. When the user is done leaving reviews and submitting requests, they can log out of their profile using the
+6. When the user is done leaving reviews and submitting requests, they can log out of their profile using the
    "LOGOUT" button.
